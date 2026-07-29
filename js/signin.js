@@ -2,6 +2,9 @@ const GOOGLE_CLIENT_ID="893618603803-3bb3pckq753e1qkpu1gqiefbhf1bl3fc.apps.googl
 const GITHUB_CLIENT_ID = "Ov23lifpXalNBTfoCcRc";
 
 async function handleGoogleCredentialResponse(response) {
+    let containers = document.querySelectorAll('#g_id_signin, #g_id_signup');
+    containers.forEach(function (c) { c.style.opacity = "0.5"; c.style.pointerEvents = "none"; });
+
     try {
         let res = await fetch(API_BASE + "/auth/google", {
             method: "POST",
@@ -23,6 +26,8 @@ async function handleGoogleCredentialResponse(response) {
     } catch (err) {
         console.error("Google sign-in failed:", err);
         showToast("Couldn't reach the server. Make sure the backend is running.");
+    } finally {
+        containers.forEach(function (c) { c.style.opacity = "1"; c.style.pointerEvents = "auto"; });
     }
 }
 
@@ -182,6 +187,7 @@ document.querySelector("#toSignIn").addEventListener("click", function(e) {
 
 document.querySelectorAll('.social-btn[data-provider="github"]').forEach(function (btn) {
     btn.addEventListener("click", function () {
+        setButtonLoading(btn, true);
         window.location.href =
             "https://github.com/login/oauth/authorize?client_id=" + GITHUB_CLIENT_ID + "&scope=user:email";
     });

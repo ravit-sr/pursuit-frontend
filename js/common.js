@@ -1,6 +1,6 @@
 const TOKEN_KEY = "pursuit_token";
 const USER_KEY = "pursuit_user";
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://pursuit-backend-um6g.onrender.com";
 
 let userName = "Guest";
 let userEmail = "";

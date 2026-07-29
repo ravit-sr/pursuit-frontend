@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pursuit - Analytics</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/analytics.css" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-initial">
+                    P
+                </div>
+                <div>
+                    <span class="logo-text">Pursuit</span>
+                    <span class="logo-tagline">Job Tracker</span>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-section-label">Main</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="dashboard.html">
+                            <span class="nav-icon">⊞</span> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applications.html">
+                            <span class="nav-icon">📋</span> Applications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html" class="active">
+                            <span class="nav-icon">📊</span> Analytics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume.html">
+                            <span class="nav-icon">📄</span> Resume
+                        </a>
+                    </li>
+                </ul>
+                <span class="sidebar-section-label">Manage</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="add_application.html" class="add-application">
+                            <span class="nav-icon">＋</span>  Add Application
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume-coach.html">
+                            <span class="nav-icon">🧠</span> Resume Coach
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="nav-icon">⚙</span> Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="sidebar-user">
+                    <div class="user-avatar">RS</div>
+                    <div class="user-info">
+                        <span class="user-name">Ravit Srivastava</span>
+                        <span class="user-role">Job Seeker</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="sidebar-overlay"></div>
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+                <h1 class="header-title">Analytics</h1>
+                    <span class="header-breadcrumb">
+                        <span>Pursuit</span>
+                        <span class="sep">›</span>
+                        <span>Insights</span>
+                    </span>
+                </div>
+                <div class="header-middle">
+                    <select class="form-control filter-select-sm" id="timeFilter">
+                        <option value="30">Last 30 days</option>
+                        <option value="60">Last 60 days</option>
+                        <option value="90">Last 90 days</option>
+                        <option value="0">All Time</option>
+                    </select>
+                </div>
+                <div class="header-right">
+                    <div id="authedBox" style="display:flex; align-items:center; gap:12px;">
+                        <div class="header-avatar">RS</div>
+                        <div class="header-user-info">
+                            <span class="h-name">Ravit Srivastava</span>
+                            <span class="h-email">ravitsrivastava3@gmail.com</span>
+                        </div>
+                        <button id="logoutBtn" class="header-btn" style="cursor:pointer;border:none;">Logout</button>
+                    </div>
+                    <div id="guestBox" style="display:none; align-items:center; gap:10px;">
+                        <a href="signin.html" class="header-btn">Sign In</a>
+                        <a href="signup.html" class="header-btn" style="background:var(--accent);color:#fff;">Sign Up</a>
+                    </div>
+                </div>
+            </header>
+            <div class="page-body" data-page-skeleton>
+                <div class="kpi-row">
+                    <div class="kpi-card"><div class="skeleton" style="height:48px;width:100%;"></div></div>
+                    <div class="kpi-card"><div class="skeleton" style="height:48px;width:100%;"></div></div>
+                    <div class="kpi-card"><div class="skeleton" style="height:48px;width:100%;"></div></div>
+                    <div class="kpi-card"><div class="skeleton" style="height:48px;width:100%;"></div></div>
+                </div>
+                <div class="analytics-row-2">
+                    <div class="card"><div class="skeleton" style="height:220px;width:100%;"></div></div>
+                    <div class="card"><div class="skeleton" style="height:220px;width:100%;"></div></div>
+                </div>
+                <div class="analytics-row-3">
+                    <div class="card"><div class="skeleton" style="height:180px;width:100%;"></div></div>
+                    <div class="card"><div class="skeleton" style="height:180px;width:100%;"></div></div>
+                    <div class="card"><div class="skeleton" style="height:180px;width:100%;"></div></div>
+                </div>
+            </div>
+            <div class="page-body" data-page-content style="display:none">
+                <div class="kpi-row">
+                    <div class="kpi-card">
+                        <span class="kpi-icon" style="background:var(--info-bg)">📋</span>
+                        <div class="kpi-body">
+                            <span class="kpi-num" id="kpiTotal">48</span>
+                            <span class="kpi-label">Total Applications</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-icon" style="background:var(--warning-bg)">📞</span>
+                        <div class="kpi-body">
+                            <span class="kpi-num" id="kpiResponseRate">29%</span>
+                            <span class="kpi-label">Response Rate</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-icon" style="background:var(--success-bg)">🏆</span>
+                        <div class="kpi-body">
+                            <span class="kpi-num" id="kpiOffer">10.4%</span>
+                            <span class="kpi-label">Offer Rate</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-icon" style="background:var(--danger-bg)">❌</span>
+                        <div class="kpi-body">
+                            <span class="kpi-num" id="kpiRejection">43.7%</span>
+                            <span class="kpi-label">Rejection Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-row-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Applications Over Time</div>
+                                <div class="card-subtitle">Daily volume for the last 30 days</div>
+                            </div>
+                        </div>
+                        <div class="line-chart-area">
+                            <div class="lc-y-labels">
+                                <span>8</span><span>6</span><span>4</span><span>2</span><span>0</span>
+                            </div>
+                            <div class="lc-inner">
+                                <svg viewBox="0 0 700 140" preserveAspectRatio="none" class="lc-svg">
+                                    <defs>
+                                    <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="rgba(79,142,247,0.3)"/>
+                                        <stop offset="100%" stop-color="rgba(79,142,247,0)"/>
+                                    </linearGradient>
+                                    </defs>
+                                    <path d="M0,120 L23,110 L46,95 L70,105 L93,80 L116,70 L140,85 L163,60 L186,75 L210,55 L233,45 L256,65 L280,40 L303,55 L326,35 L350,50 L373,30 L396,45 L420,25 L443,40 L466,20 L490,35 L513,15 L536,30 L560,20 L583,10 L606,25 L630,15 L653,5 L700,10 L700,140 L0,140 Z" fill="url(#lineGrad)" />
+                                    <path d="M0,120 L23,110 L46,95 L70,105 L93,80 L116,70 L140,85 L163,60 L186,75 L210,55 L233,45 L256,65 L280,40 L303,55 L326,35 L350,50 L373,30 L396,45 L420,25 L443,40 L466,20 L490,35 L513,15 L536,30 L560,20 L583,10 L606,25 L630,15 L653,5 L700,10" fill="none" stroke="var(--accent)" stroke-width="2" />
+                                </svg>
+                                <div class="lc-x-labels">
+                                    <span>Jun 6</span><span>Jun 13</span><span>Jun 20</span><span>Jun 27</span><span>Jul 4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Status Breakdown</div>
+                        </div>
+                        <div class="donut-wrap">
+                            <svg viewBox="0 0 160 160" class="donut-svg">
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="var(--bg-primary)" stroke-width="20"/>
+                            <!-- Applied 44% -->
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="var(--accent)" stroke-width="20"
+                                stroke-dasharray="165.6 376.9" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+                            <!-- Interview 29% -->
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#f59e0b" stroke-width="20"
+                                stroke-dasharray="108.9 376.9" stroke-dashoffset="-165.6" transform="rotate(-90 80 80)"/>
+                            <!-- Offer 10% -->
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#22c55e" stroke-width="20"
+                                stroke-dasharray="37.7 376.9" stroke-dashoffset="-274.5" transform="rotate(-90 80 80)"/>
+                            <!-- Rejected 17% -->
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#ef4444" stroke-width="20"
+                                stroke-dasharray="64.1 376.9" stroke-dashoffset="-312.2" transform="rotate(-90 80 80)"/>
+                            <text x="80" y="76" text-anchor="middle" fill="var(--text-primary)" font-size="18" font-weight="700" font-family="Inter">48</text>
+                            <text x="80" y="92" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="Inter">Total</text>
+                            </svg>
+                            <div class="donut-legend">
+                            <div class="dl-item"><span class="dl-dot" style="background:var(--accent)"></span>Applied <strong>44%</strong></div>
+                            <div class="dl-item"><span class="dl-dot" style="background:#f59e0b"></span>Interview <strong>29%</strong></div>
+                            <div class="dl-item"><span class="dl-dot" style="background:#22c55e"></span>Offer <strong>10%</strong></div>
+                            <div class="dl-item"><span class="dl-dot" style="background:#ef4444"></span>Rejected <strong>17%</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analytics-row-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Response Rate by Source</div>
+                            <div class="card-subtitle">% of applications that got a reply</div>
+                        </div>
+                        <div class="h-bar-chart">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Top Rejection Patterns</div>
+                        </div>
+                        <div class="rejection-list" id="rejectionList"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Role Success Rate</div>
+                            <div class="card-subtitle">Interview + offer rate by role</div>
+                        </div>
+                        <div class="role-success-list" id="roleSuccessList">
+                        </div>
+                    </div>
+                </div>
+                <div class="card ai-summary-card">
+                    <div class="card-header">
+                        <div class="card-title">✦ AI Performance Summary</div>
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <span class="ai-badge-pill">Powered by AI</span>
+                            <button id="generateInsightsBtn" class="btn btn-secondary btn-sm">Regenerate</button>
+                        </div>
+                    </div>
+                    <div class="ai-summary-grid" id="aiSummaryGrid"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>

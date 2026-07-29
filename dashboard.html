@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pursuit - Dashboard</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-initial">
+                    P
+                </div>
+                <div>
+                    <span class="logo-text">Pursuit</span>
+                    <span class="logo-tagline">Job Tracker</span>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-section-label">Main</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="dashboard.html" class="active">
+                            <span class="nav-icon">⊞</span> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applications.html">
+                            <span class="nav-icon">📋</span> Applications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <span class="nav-icon">📊</span> Analytics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume.html">
+                            <span class="nav-icon">📄</span> Resume
+                        </a>
+                    </li>
+                </ul>
+                <span class="sidebar-section-label">Manage</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="add_application.html" class="add-application">
+                            <span class="nav-icon">＋</span>  Add Application
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume-coach.html">
+                            <span class="nav-icon">🧠</span> Resume Coach
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="nav-icon">⚙</span> Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="sidebar-user">
+                    <div class="user-avatar">RS</div>
+                    <div class="user-info">
+                        <span class="user-name">Ravit Srivastava</span>
+                        <span class="user-role">Job Seeker</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="sidebar-overlay"></div>
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+                <h1 class="header-title">Dashboard</h1>
+                    <span class="header-breadcrumb">
+                        <span>Pursuit</span>
+                        <span class="sep">›</span>
+                        <span>Overview</span>
+                    </span>
+                </div>
+                <div class="header-right">
+                    <div id="authedBox" style="display:flex; align-items:center; gap:12px;">
+                        <div class="header-avatar">RS</div>
+                        <div class="header-user-info">
+                            <span class="h-name">Ravit Srivastava</span>
+                            <span class="h-email">ravitsrivastava3@gmail.com</span>
+                        </div>
+                        <button id="logoutBtn" class="header-btn" style="cursor:pointer;border:none;">Logout</button>
+                    </div>
+                    <div id="guestBox" style="display:none; align-items:center; gap:10px;">
+                        <a href="signin.html" class="header-btn">Sign In</a>
+                        <a href="signup.html" class="header-btn" style="background:var(--accent);color:#fff;">Sign Up</a>
+                    </div>
+                </div>
+            </header>
+            <div class="page-body skeleton-page" data-page-skeleton>
+                <div class="skeleton" style="height:110px;border-radius:var(--radius-lg);margin-bottom:24px;"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                    <div class="stat-card"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                    <div class="stat-card"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                    <div class="stat-card"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                </div>
+                <div class="mid-grid">
+                    <div class="card">
+                        <div class="skeleton" style="height:18px;width:160px;margin-bottom:18px;"></div>
+                        <div class="skeleton" style="height:36px;width:100%;margin-bottom:10px;"></div>
+                        <div class="skeleton" style="height:36px;width:100%;margin-bottom:10px;"></div>
+                        <div class="skeleton" style="height:36px;width:100%;margin-bottom:10px;"></div>
+                        <div class="skeleton" style="height:36px;width:100%;"></div>
+                    </div>
+                    <div class="right-col">
+                        <div class="card"><div class="skeleton" style="height:90px;width:100%;"></div></div>
+                        <div class="card"><div class="skeleton" style="height:130px;width:100%;"></div></div>
+                        <div class="card"><div class="skeleton" style="height:80px;width:100%;"></div></div>
+                    </div>
+                </div>
+                <div class="bottom-grid">
+                    <div class="card"><div class="skeleton" style="height:140px;width:100%;"></div></div>
+                    <div class="card"><div class="skeleton" style="height:140px;width:100%;"></div></div>
+                    <div class="card"><div class="skeleton" style="height:140px;width:100%;"></div></div>
+                </div>
+            </div>
+            <div class="page-body" data-page-content style="display:none">
+                <div class="welcome-banner">
+                    <div class="wb-content">
+                    <h2 class="wb-heading">Welcome!! Ravit 👋</h2>
+                    <p id="wbSubtext">Loading your week…</p>
+                    <a href="applications.html" class="btn btn-primary">View All Applications</a>
+                    </div>
+                    <div class="wb-art">🎯</div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card stat-total">
+                        <div class="stat-icon-wrap">📋</div>
+                        <div class="stat-info">
+                            <span class="stat-number">–</span>
+                            <span class="stat-label">Total Applications</span>
+                        </div>
+                        <div class="stat-trend up" id="totalTrend">&nbsp;</div>
+                    </div>
+                    <div class="stat-card stat-progress">
+                        <div class="stat-icon-wrap">⏳</div>
+                        <div class="stat-info">
+                            <span class="stat-number">–</span>
+                            <span class="stat-label">In Progress</span>
+                        </div>
+                        <div class="stat-trend up" id="progressTrend">&nbsp;</div>
+                    </div>
+                    <div class="stat-card stat-offers">
+                        <div class="stat-icon-wrap">🏆</div>
+                        <div class="stat-info">
+                            <span class="stat-number">–</span>
+                            <span class="stat-label">Offers Received</span>
+                        </div>
+                        <div class="stat-trend up" id="offersTrend">&nbsp;</div>
+                    </div>
+                    <div class="stat-card stat-rejected">
+                        <div class="stat-icon-wrap">✕</div>
+                        <div class="stat-info">
+                            <span class="stat-number">–</span>
+                            <span class="stat-label">Rejected</span>
+                        </div>
+                        <div class="stat-trend down" id="rejectedTrend">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="mid-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Recent Applications</div>
+                                <div class="card-subtitle">Last few days</div>
+                            </div>
+                            <a href="applications.html" class="btn btn-secondary btn-sm">View All</a>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                    <th>Company</th>
+                                    <th>Role</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentAppsBody">
+                                    <!-- Rows are inserted here by dashboard.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="right-col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Application Funnel</div>
+                            </div>
+                            <div class="funnel" id="funnelContainer"></div>
+                        </div>
+                        <div class="card insight-card">
+                            <div class="card-header">
+                                <div class="card-title">✦ AI Insight</div>
+                                <span class="ai-badge">Smart</span>
+                            </div>
+                            <div class="insight-list" id="aiInsightList"></div>
+                            <a href="analytics.html" class="btn btn-secondary btn-sm" style="margin-top:14px;width:100%;justify-content:center">View Full Report</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Goal Progress</div>
+                            </div>
+                            <div id="goalProgressBody"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Upcoming Actions</div>
+                            <a href="#" class="btn btn-secondary btn-sm">+ Add Reminder</a>
+                        </div>
+                        <div class="action-list" id="upcomingActionsList"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Application Sources</div>
+                        </div>
+                        <div class="source-list" id="sourceList"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Weekly Activity</div>
+                        </div>
+                        <div class="weekly-chart">
+                            <div class="wc-bars" id="wcBars"></div>
+                        </div>
+                        <div class="wc-legend">
+                            <span>⬤ Applications sent this week: <strong id="weeklyCount">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

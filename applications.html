@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pursuit - Applications</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/applications.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-initial">
+                    P
+                </div>
+                <div>
+                    <span class="logo-text">Pursuit</span>
+                    <span class="logo-tagline">Job Tracker</span>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-section-label">Main</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="dashboard.html">
+                            <span class="nav-icon">⊞</span> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applications.html" class="active">
+                            <span class="nav-icon">📋</span> Applications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <span class="nav-icon">📊</span> Analytics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume.html">
+                            <span class="nav-icon">📄</span> Resume
+                        </a>
+                    </li>
+                </ul>
+                <span class="sidebar-section-label">Manage</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="add_application.html" class="add-application">
+                            <span class="nav-icon">＋</span>  Add Application
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume-coach.html">
+                            <span class="nav-icon">🧠</span> Resume Coach
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="nav-icon">⚙</span> Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="sidebar-user">
+                    <div class="user-avatar">RS</div>
+                    <div class="user-info">
+                        <span class="user-name">Ravit Srivastava</span>
+                        <span class="user-role">Job Seeker</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="sidebar-overlay"></div>
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+                <h1 class="header-title">Applications</h1>
+                    <span class="header-breadcrumb">
+                        <span>Pursuit</span>
+                        <span class="sep">›</span>
+                        <span>All Applications</span>
+                    </span>
+                </div>
+                <div class="header-middle">
+                    <div class="header-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search by company or role." id="searchInput" />
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div id="authedBox" style="display:flex; align-items:center; gap:12px;">
+                        <div class="header-avatar">RS</div>
+                        <div class="header-user-info">
+                            <span class="h-name">Ravit Srivastava</span>
+                            <span class="h-email">ravitsrivastava3@gmail.com</span>
+                        </div>
+                        <button id="logoutBtn" class="header-btn" style="cursor:pointer;border:none;">Logout</button>
+                    </div>
+                    <div id="guestBox" style="display:none; align-items:center; gap:10px;">
+                        <a href="signin.html" class="header-btn">Sign In</a>
+                        <a href="signup.html" class="header-btn" style="background:var(--accent);color:#fff;">Sign Up</a>
+                    </div>
+                </div>
+            </header>
+            <div class="page-body" data-page-skeleton>
+                <div class="status-cards">
+                    <div class="sc"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                    <div class="sc"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                    <div class="sc"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                    <div class="sc"><div class="skeleton" style="height:56px;width:100%;"></div></div>
+                </div>
+                <div class="card">
+                    <div class="skeleton" style="height:36px;width:100%;margin-bottom:16px;"></div>
+                    <div class="skeleton" style="height:38px;width:100%;margin-bottom:8px;"></div>
+                    <div class="skeleton" style="height:38px;width:100%;margin-bottom:8px;"></div>
+                    <div class="skeleton" style="height:38px;width:100%;margin-bottom:8px;"></div>
+                    <div class="skeleton" style="height:38px;width:100%;margin-bottom:8px;"></div>
+                    <div class="skeleton" style="height:38px;width:100%;margin-bottom:8px;"></div>
+                    <div class="skeleton" style="height:38px;width:100%;"></div>
+                </div>
+            </div>
+            <div class="page-body" data-page-content style="display:none">
+                <div class="status-cards">
+                    <div class="sc sc-total">
+                        <div class="sc-icon">📋</div>
+                        <div class="sc-body">
+                            <span class="sc-num">–</span>
+                            <span class="sc-label">Total Applications</span>
+                        </div>
+                        <div class="sc-bar" style="background: var(--accent);"></div>
+                    </div>
+                    <div class="sc sc-progress">
+                        <div class="sc-icon">⏳</div>
+                        <div class="sc-body">
+                            <span class="sc-num">–</span>
+                            <span class="sc-label">In Progress</span>
+                        </div>
+                        <div class="sc-bar" style="background: #f59e0b;"></div>
+                    </div>
+                    <div class="sc sc-offers">
+                        <div class="sc-icon">🏆</div>
+                        <div class="sc-body">
+                            <span class="sc-num">–</span>
+                            <span class="sc-label">Offers</span>
+                        </div>
+                        <div class="sc-bar" style="background: #22c55e;"></div>
+                    </div>
+                    <div class="sc sc-rejected">
+                        <div class="sc-icon">✕</div>
+                        <div class="sc-body">
+                            <span class="sc-num">–</span>
+                            <span class="sc-label">Rejected</span>
+                        </div>
+                        <div class="sc-bar" style="background: #ef4444;"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="apps-toolbar">
+                        <div class="filter-tabs" id="filterTabs">
+                            <button class="filter-tab active" data-status="All">
+                                All<span class="tab-count"></span>
+                            </button>
+                            <button class="filter-tab" data-status="Applied">
+                                Applied<span class="tab-count"></span>
+                            </button>
+                            <button class="filter-tab" data-status="Interview">
+                                Interview<span class="tab-count"></span>
+                            </button>
+                            <button class="filter-tab" data-status="Offer">
+                                Offer<span class="tab-count"></span>
+                            </button>
+                            <button class="filter-tab" data-status="Rejected">
+                                Rejected<span class="tab-count"></span>
+                            </button>
+                        </div>
+                        <div class="toolbar-actions">
+                            <select class="form-control filter-select" id="sourceFilter">
+                                <option value="">All Sources</option>
+                                <option value="LinkedIn">Linkedin</option>
+                                <option value="Company Site">Company Site</option>
+                                <option value="Indeed">Indeed</option>
+                                <option value="Referral">Referral</option>
+                                <option value="Glassdoor">Glassdoor</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <select class="form-control filter-select" id="sortFilter">
+                                <option value="Newest">Sort: Newest</option>
+                                <option value="Oldest">Sort: Oldest</option>
+                                <option value="az">Sort: A-Z</option>
+                            </select>
+                        </div>
+                        <a href="add_application.html" class="app-toolbar btn btn-primary btn-sm" style="white-space: nowrap;">+ Add Application</a>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="apptable">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Role</th>
+                                    <th>Location</th>
+                                    <th>Date Applied</th>
+                                    <th>Source</th>
+                                    <th>Status</th>
+                                    <th>Salary</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appsTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <span class="pg-info" id="pgInfo">Showing 1–10 of 48 applications</span>
+                        <div class="pg-controls" id="pgControls"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/applications.js"></script>
+</body>
+</html>

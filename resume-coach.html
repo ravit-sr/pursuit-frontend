@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Coach — Pursuit</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/resume-coach.css" />
+</head>
+<body>
+    <div class="coach-app">
+        <div class="coach-topbar">
+            <button class="back-btn" onclick="history.back()">← Back</button>
+            <span class="coach-topbar-title">Resume Coach</span>
+            <span class="coach-topbar-resume" id="activeResumeName"></span>
+        </div>
+        <div class="coach-body">
+            <aside class="chat-sidebar">
+                <button class="new-chat-btn" id="newChatBtn">+ New Chat</button>
+                <div class="chat-list" id="chatList"></div>
+            </aside>
+            <div class="coach-main">
+                <div class="preview-toggle-bar">
+                    <button class="ptb-btn active" data-view="chat">💬 Chat</button>
+                    <button class="ptb-btn" data-view="preview">📄 Resume Preview</button>
+                </div>
+                <div class="chat-panel" id="chatPanelView">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-row">
+                        <textarea id="chatInput" class="chat-input" placeholder="Ask about your resume…" rows="1"></textarea>
+                        <button id="chatSendBtn" class="btn btn-primary btn-sm">Send</button>
+                    </div>
+                </div>
+                <div class="preview-panel" id="previewPanelView" style="display:none;">
+                    <div class="preview-pane" id="previewPane"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/resume-coach.js"></script>
+</body>
+</html>

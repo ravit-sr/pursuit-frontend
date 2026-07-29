@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume — Pursuit</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/resume.css" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-initial">
+                    P
+                </div>
+                <div>
+                    <span class="logo-text">Pursuit</span>
+                    <span class="logo-tagline">Job Tracker</span>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-section-label">Main</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="dashboard.html">
+                            <span class="nav-icon">⊞</span> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applications.html">
+                            <span class="nav-icon">📋</span> Applications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <span class="nav-icon">📊</span> Analytics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume.html" class="active">
+                            <span class="nav-icon">📄</span> Resume
+                        </a>
+                    </li>
+                </ul>
+                <span class="sidebar-section-label">Manage</span>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="add_application.html" class="add-application">
+                            <span class="nav-icon">＋</span>  Add Application
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume-coach.html">
+                            <span class="nav-icon">🧠</span> Resume Coach
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="nav-icon">⚙</span> Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="sidebar-user">
+                    <div class="user-avatar">RS</div>
+                    <div class="user-info">
+                        <span class="user-name">Ravit Srivastava</span>
+                        <span class="user-role">Job Seeker</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="sidebar-overlay"></div>
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+                <h1 class="header-title">Resume</h1>
+                    <span class="header-breadcrumb">
+                        <span>Pursuit</span>
+                        <span class="sep">›</span>
+                        <span>Resume Analyzer</span>
+                    </span>
+                </div>
+                <div class="header-right">
+                    <div id="authedBox" style="display:flex; align-items:center; gap:12px;">
+                        <div class="header-avatar">RS</div>
+                        <div class="header-user-info">
+                            <span class="h-name">Ravit Srivastava</span>
+                            <span class="h-email">ravitsrivastava3@gmail.com</span>
+                        </div>
+                        <button id="logoutBtn" class="header-btn" style="cursor:pointer;border:none;">Logout</button>
+                    </div>
+                    <div id="guestBox" style="display:none; align-items:center; gap:10px;">
+                        <a href="signin.html" class="header-btn">Sign In</a>
+                        <a href="signup.html" class="header-btn" style="background:var(--accent);color:#fff;">Sign Up</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-body" data-page-skeleton>
+                <div class="resume-grid">
+                    <div class="left-col">
+                        <div class="card"><div class="skeleton" style="height:120px;width:100%;"></div></div>
+                        <div class="card"><div class="skeleton" style="height:220px;width:100%;"></div></div>
+                    </div>
+                    <div class="right-col">
+                        <div class="card"><div class="skeleton" style="height:180px;width:100%;"></div></div>
+                        <div class="card"><div class="skeleton" style="height:120px;width:100%;"></div></div>
+                        <div class="card"><div class="skeleton" style="height:120px;width:100%;"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-body" data-page-content style="display:none">
+                <div class="resume-grid">
+                    <div class="left-col">
+                        <div class="card upload-card">
+                            <div class="card-title" style="margin-bottom:14px">📎 Upload Resume</div>
+                            <div class="resume-drop" id="resumeDrop">
+                                <span class="rd-icon">📄</span>
+                                <div>
+                                    <strong>Drop your resume here</strong>
+                                    <p>PDF or DOCX, up to 5MB</p>
+                                </div>
+                                <input type="file" accept=".pdf,.docx" style="display:none" id="resumeFile" />
+                                <button class="btn btn-primary btn-sm">Browse File</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Saved Resumes</div>
+                                <button class="btn btn-secondary btn-sm">+ New</button>
+                            </div>
+                            <div class="resume-list">
+                                <div class="resume-item active-resume">
+                                    <span class="ri-icon">📄</span>
+                                    <div class="ri-info">
+                                        <strong>Alex_Johnson_SWE_2026.pdf</strong>
+                                        <span>Uploaded Jul 3, 2026 · 1.2 MB</span>
+                                    </div>
+                                    <div class="ri-actions">
+                                        <span class="ri-active-badge">Active</span>
+                                        <button class="act-btn" data-tooltip="Download">⬇</button>
+                                        <button class="act-btn danger" data-tooltip="Delete">🗑</button>
+                                    </div>
+                                </div>
+                                <div class="resume-item">
+                                    <span class="ri-icon">📄</span>
+                                    <div class="ri-info">
+                                        <strong>Alex_Johnson_PM_2026.pdf</strong>
+                                        <span>Uploaded Jun 20, 2026 · 980 KB</span>
+                                    </div>
+                                    <div class="ri-actions">
+                                        <button class="btn btn-secondary btn-sm">Set Active</button>
+                                        <button class="act-btn" data-tooltip="Download">⬇</button>
+                                        <button class="act-btn danger" data-tooltip="Delete">🗑</button>
+                                    </div>
+                                </div>
+                                <div class="resume-item">
+                                    <span class="ri-icon">📄</span>
+                                    <div class="ri-info">
+                                        <strong>Alex_Johnson_Generic.pdf</strong>
+                                        <span>Uploaded May 14, 2026 · 1.0 MB</span>
+                                    </div>
+                                    <div class="ri-actions">
+                                        <button class="btn btn-secondary btn-sm">Set Active</button>
+                                        <button class="act-btn" data-tooltip="Download">⬇</button>
+                                        <button class="act-btn danger" data-tooltip="Delete">🗑</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-col">
+                        <div class="card score-card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Resume Score</div>
+                                    <div class="card-subtitle">Based on ATS compatibility & completeness</div>
+                                </div>
+                                <button class="btn btn-secondary btn-sm">Re-analyze</button>
+                            </div>
+                            <div class="score-body">        
+                                <div class="score-circle-wrap">
+                                    
+                                </div>
+                                <div class="score-breakdown" id="scoreBreakdown"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Missing Keywords</div>
+                                <div class="card-subtitle" id="keywordSubtitle">Found in job descriptions you applied to</div>
+                            </div>
+                            <div class="keyword-chips missing" id="missingKeywordChips"></div>
+                            <div class="card-title" style="margin-top:16px;margin-bottom:10px;font-size:12.5px">Present in Your Resume</div>
+                            <div class="keyword-chips present" id="presentKeywordChips"></div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">✦ AI Improvement Suggestions</div>
+                                <span class="ai-badge-sm">AI</span>
+                            </div>
+                            <div class="suggestion-list" id="suggestionList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/resume.js"></script>
+</body>
+</html>

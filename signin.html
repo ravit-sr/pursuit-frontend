@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pursuit - Sign-in</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/signin.css">
+</head>
+<body class="auth-body">
+    <div class="auth-glow">
+        <div class="auth-wrapper" id="authWrapper">
+            <div class="auth-panel signup-panel">
+                <div class="auth-panel-inner">
+                    <div class="auth-logo">
+                        <div class="logo-icon">P</div>
+                        <span class="logo-text">Pursuit</span>
+                    </div>
+                    <div class="auth-heading">
+                        <h1>Create account</h1>
+                        <p>Start tracking applications and land your dream job.</p>
+                    </div>
+                    <form class="auth-form" id="signupForm" action="dashboard.html">
+                        <div class="form-row form-row-2">
+                            <div class="form-group">
+                                <label class="form-label" for="su_fname">First name <span class="required">*</span></label>
+                                <input class="form-control" type="text" id="su_fname" placeholder="Alex" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="su_lname">Last name <span class="required">*</span></label>
+                                <input class="form-control" type="text" id="su_lname" placeholder="Johnson" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="su_email">Email address <span class="required">*</span></label>
+                            <div class="input-icon-wrap">
+                                <span class="input-icon">✉</span>
+                                <input class="form-control" type="email" id="su_email" placeholder="you@example.com" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="su_password">Password <span class="required">*</span></label>
+                            <div class="input-icon-wrap">
+                                <span class="input-icon">🔒</span>
+                                <input class="form-control" type="password" id="su_password" placeholder="Min. 8 characters"
+                                    required />
+                                <button type="button" class="input-toggle-eye" data-target="su_password">👁</button>
+                            </div>
+                            <div class="pwd-strength">
+                                <div class="strength-bars">
+                                    <div class="strength-bar" id="sb1"></div>
+                                    <div class="strength-bar" id="sb2"></div>
+                                    <div class="strength-bar" id="sb3"></div>
+                                    <div class="strength-bar" id="sb4"></div>
+                                </div>
+                                <span class="strength-label" id="strengthLabel">Enter a password</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-auth">Create Free Account</button>
+                        <div class="auth-divider">
+                            <span>or sign up with</span>
+                        </div>
+                        <div class="social-btns">
+                            <div id="g_id_signup" style="display:flex;justify-content:center;"></div>
+                            <button type="button" class="social-btn" data-provider="github">
+                                <span>🐙</span> GitHub
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="auth-panel signin-panel">
+                <div class="auth-panel-inner">
+                    <div class="auth-logo">
+                        <div class="logo-icon">P</div>
+                        <span class="logo-text">Pursuit</span>
+                    </div>
+                    <div class="auth-heading">
+                        <h1>Welcome back</h1>
+                        <p>Sign in to continue tracking your job applications.</p>
+                    </div>
+                    <form class="auth-form" id="signinForm" action="dashboard.html">
+                        <div class="form-group">
+                            <label class="form-label" for="si_email">Email address</label>
+                            <div class="input-icon-wrap">
+                                <span class="input-icon">✉</span>
+                                <input class="form-control" type="email" id="si_email" placeholder="you@example.com" required />
+                            </div>
+                            <div class="field-error" id="si_email_error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="si_password">
+                                Password
+                            </label>
+                            <div class="input-icon-wrap">
+                                <span class="input-icon">🔒</span>
+                                <input class="form-control" type="password" id="si_password" placeholder="••••••••" required />
+                                <button type="button" class="input-toggle-eye" data-target="si_password">👁</button>
+                            </div>
+                            <div class="field-error" id="si_password_error"></div>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="forgot-password.html" class="form-label-link">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-auth">Sign In</button>
+                        <div class="auth-divider"><span>or continue with</span></div>
+                        <div class="social-btns">
+                            <div id="g_id_signin" style="display:flex;justify-content:center;"></div>
+                            <button type="button" class="social-btn" data-provider="github">
+                                <span>🐙</span> GitHub
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <div class="overlay-logo">
+                            <div class="logo-icon-ov">P</div>
+                            <span>Pursuit</span>
+                        </div>
+                        <div class="ov-stats">
+                            <div class="ov-stat"><span class="ov-num">248</span><span class="ov-lbl">Apps Tracked</span></div>
+                            <div class="ov-div"></div>
+                            <div class="ov-stat"><span class="ov-num">32</span><span class="ov-lbl">Interviews</span></div>
+                            <div class="ov-div"></div>
+                            <div class="ov-stat"><span class="ov-num">5</span><span class="ov-lbl">Offers</span></div>
+                        </div>
+                        <h2>Already have<br />an account?</h2>
+                        <p>Sign in to pick up right where you left off.</p>
+                        <button class="ov-btn" id="toSignIn">Sign In →</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <div class="overlay-logo">
+                            <div class="logo-icon-ov">P</div>
+                            <span>Pursuit</span>
+                        </div>
+                        <div class="ov-tagline">✦ Job Tracking Made Smart</div>
+                        <h2>Land your<br />dream job.</h2>
+                        <p>Track every application, analyze your progress, and get AI-powered insights on what's holding you
+                            back.</p>
+                        <div class="ov-features">
+                            <div class="ov-feat">✓ Resume Analyzer</div>
+                            <div class="ov-feat">✓ Rejection Insights</div>
+                            <div class="ov-feat">✓ Interview Tracker</div>
+                        </div>
+                        <button class="ov-btn" id="toSignUp">Create Account →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="js/common.js"></script>
+    <script src="js/signin.js"></script>
+</body>
+</html>

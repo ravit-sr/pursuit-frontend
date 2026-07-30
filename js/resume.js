@@ -7,6 +7,7 @@ function requireLogin() {
 }
 
 async function loadResumes() {
+    if (!isLoggedIn()) return [];
     let res = await fetch(API_BASE + "/resumes", {
         credentials: "include"
     });
@@ -313,14 +314,17 @@ if (reanalyzeBtn) {
     reanalyzeBtn.addEventListener("click", async function () {
         if (!requireLogin()) return;
 
+        setButtonLoading(reanalyzeBtn, true, "Checking…");
+
         let resumes = await loadResumes();
         let active = getActiveResume(resumes);
         if (!active) {
-            showResumeToast("Upload and set an active resume first.");
+            setButtonLoading(reanalyzeBtn, false);
+            showResumeToast(resumes.length ? "No active resume — click \"Set Active\" on one below first." : "Upload a resume first.");
             return;
         }
 
-        setButtonLoading(reanalyzeBtn, true);
+        setButtonLoading(reanalyzeBtn, true, "Analyzing…");
         renderLoadingState();
 
         try {

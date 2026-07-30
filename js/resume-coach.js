@@ -247,11 +247,17 @@ async function loadPreview() {
         }
         previewLoadedForResume = currentResumeId;
     } catch (e) {
+        console.error("Resume preview failed:", e);
         previewPane.innerHTML = `<div class="coach-empty">Couldn't load preview.</div>`;
     }
 }
 
 async function initCoach() {
+    if (!requireLogin()) {
+        hidePageSkeleton();
+        return;
+    }
+
     let resumes = await loadResumesList();
     let active = resumes.find(function (r) { return r.active; });
 

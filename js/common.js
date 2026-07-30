@@ -232,15 +232,23 @@ if (appToolbar) {
         }
     });
 }
-function setButtonLoading(btn, isLoading) {
+function setButtonLoading(btn, isLoading, loadingText) {
     if (!btn) return;
     if (isLoading) {
-        if (btn.dataset.loading === "1") return;
+        if (btn.dataset.loading === "1") {
+            if (loadingText) {
+                let label = btn.querySelector(".btn-spinner-label");
+                if (label) label.textContent = loadingText;
+            }
+            return;
+        }
         btn.dataset.loading = "1";
         btn.dataset.originalContent = btn.innerHTML;
         btn.style.minWidth = btn.offsetWidth + "px";
         btn.disabled = true;
-        btn.innerHTML = '<span class="btn-spinner"></span>';
+        btn.innerHTML = loadingText
+            ? '<span class="btn-spinner"></span><span class="btn-spinner-label">' + loadingText + '</span>'
+            : '<span class="btn-spinner"></span>';
     } else {
         if (btn.dataset.loading !== "1") return;
         btn.disabled = false;
@@ -301,12 +309,10 @@ function getDisplaySource(rawSource) {
         overlay.addEventListener("click", closeSidebar);
     }
 
-    // Close the drawer whenever a nav link is tapped (mobile)
     document.querySelectorAll(".sidebar-nav a, .sidebar-user").forEach(function (el) {
         el.addEventListener("click", closeSidebar);
     });
 
-    // If the viewport grows back past the drawer breakpoint, reset state
     window.addEventListener("resize", function () {
         if (window.innerWidth > 1024) closeSidebar();
     });

@@ -333,6 +333,8 @@ if (reanalyzeBtn) {
             if (!res.ok) {
                 let err = await res.json().catch(function () { return {}; });
                 showResumeToast(err.detail || "Analysis failed.");
+                let freshResumes = await loadResumes();
+                renderAllAnalysis(freshResumes);
             } else {
                 let analysis = await res.json();
                 renderScoreRing(analysis);

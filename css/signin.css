@@ -474,9 +474,49 @@
 }
 
 .social-btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+}
+
+.social-btns > div,
+.social-btns > button {
+    width: 100%;
+}
+
+.gsi-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gsi-wrap > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gsi-loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text-secondary);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+}
+
+.gsi-loading-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .social-btns > div {

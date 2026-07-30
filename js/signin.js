@@ -2,8 +2,8 @@ const GOOGLE_CLIENT_ID="893618603803-3bb3pckq753e1qkpu1gqiefbhf1bl3fc.apps.googl
 const GITHUB_CLIENT_ID = "Ov23lifpXalNBTfoCcRc";
 
 async function handleGoogleCredentialResponse(response) {
-    let containers = document.querySelectorAll('#g_id_signin, #g_id_signup');
-    containers.forEach(function (c) { c.style.opacity = "0.5"; c.style.pointerEvents = "none"; });
+    let overlays = document.querySelectorAll('.gsi-loading-overlay');
+    overlays.forEach(function (o) { o.classList.add("active"); });
 
     try {
         let res = await fetch(API_BASE + "/auth/google", {
@@ -27,7 +27,7 @@ async function handleGoogleCredentialResponse(response) {
         console.error("Google sign-in failed:", err);
         showToast("Couldn't reach the server. Make sure the backend is running.");
     } finally {
-        containers.forEach(function (c) { c.style.opacity = "1"; c.style.pointerEvents = "auto"; });
+        overlays.forEach(function (o) { o.classList.remove("active"); });
     }
 }
 
@@ -48,14 +48,20 @@ window.addEventListener("load", function () {
         return Math.max(100, Math.min(400, available));
     }
 
-    let signinDiv = document.getElementById("g_id_signin");
-    if (signinDiv) {
-        google.accounts.id.renderButton(signinDiv, { theme: "outline", size: "large", width: gsiWidth(signinDiv) });
-    }
-    let signupDiv = document.getElementById("g_id_signup");
-    if (signupDiv) {
-        google.accounts.id.renderButton(signupDiv, { theme: "outline", size: "large", width: gsiWidth(signupDiv) });
-    }
+    // Defer to the next animation frame so the flex/column layout has
+    // finished sizing the container before we measure its width — measuring
+    // synchronously on "load" can catch the container mid-layout and render
+    // Google's button too small / misaligned.
+    requestAnimationFrame(function () {
+        let signinDiv = document.getElementById("g_id_signin");
+        if (signinDiv) {
+            google.accounts.id.renderButton(signinDiv, { theme: "outline", size: "large", width: gsiWidth(signinDiv) });
+        }
+        let signupDiv = document.getElementById("g_id_signup");
+        if (signupDiv) {
+            google.accounts.id.renderButton(signupDiv, { theme: "outline", size: "large", width: gsiWidth(signupDiv) });
+        }
+    });
 });
 
 async function applyAccountAppearance() {
@@ -244,6 +250,8 @@ document.querySelector("#su_password").addEventListener("input", function(e) {
 });
 
 (function handleGithubRedirect() {
+    // GitHub sign-in redirects back here with the user's info in the hash;
+    // the session cookie itself is already set httpOnly by the backend redirect.
     if (!window.location.hash.includes("id=")) return;
 
     let params = new URLSearchParams(window.location.hash.substring(1));

@@ -61,6 +61,7 @@
                                 <label for="su_terms">
                                     I agree to the <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>
                                     and <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+                                    <span class="required">*</span>
                                 </label>
                             </div>
                         </div>
@@ -69,7 +70,10 @@
                             <span>or sign up with</span>
                         </div>
                         <div class="social-btns">
-                            <div id="g_id_signup" style="display:flex;justify-content:center;"></div>
+                            <div class="gsi-wrap">
+                                <div id="g_id_signup"></div>
+                                <div class="gsi-loading-overlay"><span class="btn-spinner"></span>Signing in…</div>
+                            </div>
                             <button type="button" class="social-btn" data-provider="github">
                                 <span>🐙</span> GitHub
                             </button>
@@ -113,7 +117,10 @@
                         <button type="submit" class="btn btn-primary btn-auth">Sign In</button>
                         <div class="auth-divider"><span>or continue with</span></div>
                         <div class="social-btns">
-                            <div id="g_id_signin" style="display:flex;justify-content:center;"></div>
+                            <div class="gsi-wrap">
+                                <div id="g_id_signin"></div>
+                                <div class="gsi-loading-overlay"><span class="btn-spinner"></span>Signing in…</div>
+                            </div>
                             <button type="button" class="social-btn" data-provider="github">
                                 <span>🐙</span> GitHub
                             </button>

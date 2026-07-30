@@ -709,6 +709,7 @@
 
 .int-info {
     flex: 1;
+    min-width: 0;
 }
 
 .int-info strong {
@@ -909,7 +910,6 @@ select.form-control {
     padding-right: 32px;
 
 }
-/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
     .settings-layout {
         grid-template-columns: minmax(0, 1fr);
@@ -963,5 +963,19 @@ select.form-control {
     .save-row {
         flex-direction: column-reverse;
         align-items: stretch;
+    }
+
+    .integration-item {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .integration-item .int-info {
+        flex-basis: 100%;
+    }
+
+    .integration-item .int-badge,
+    .integration-item .btn-sm {
+        margin-left: 0;
     }
 }

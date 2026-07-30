@@ -482,7 +482,7 @@ if (exportDataBtn) {
                     app.dateApplied, app.source, app.status, app.salary || "",
                     app.jobUrl || "", app.contact || "", app.contactEmail || "",
                     (app.notes || "").replace(/\n/g, " "),
-                    (app.tags || []).join("; ")
+                    (app.tags || "").split(",").filter(Boolean).join("; ")
                 ].map(function (val) { return '"' + String(val).replace(/"/g, '""') + '"'; }).join(",");
             });
             let csv = [headers.join(",")].concat(rows).join("\n");

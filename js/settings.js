@@ -472,28 +472,34 @@ if (exportDataBtn) {
     exportDataBtn.addEventListener("click",async function () {
         if (!requireLogin()) return;
         setButtonLoading(exportDataBtn, true);
-        let apps = await loadApplications();
-        if (apps.length === 0) { showToast("No applications to export.", "error"); setButtonLoading(exportDataBtn, false); return; }
-        let headers = ["ID","Company","Role","Location","Date Applied","Source","Status","Salary","Job URL","Contact","Contact Email","Notes","Tags"];
-        let rows = apps.map(function (app) {
-            return [
-                app.id, app.company, app.role, app.location,
-                app.dateApplied, app.source, app.status, app.salary || "",
-                app.jobUrl || "", app.contact || "", app.contactEmail || "",
-                (app.notes || "").replace(/\n/g, " "),
-                (app.tags || []).join("; ")
-            ].map(function (val) { return '"' + String(val).replace(/"/g, '""') + '"'; }).join(",");
-        });
-        let csv = [headers.join(",")].concat(rows).join("\n");
-        let blob = new Blob([csv], { type: "text/csv" });
-        let url = URL.createObjectURL(blob);
-        let a = document.createElement("a");
-        a.href = url;
-        a.download = "pursuit_applications.csv";
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast("Export downloaded: pursuit_applications.csv");
-        setButtonLoading(exportDataBtn, false);
+        try {
+            let apps = await loadApplications();
+            if (apps.length === 0) { showToast("No applications to export.", "error"); return; }
+            let headers = ["ID","Company","Role","Location","Date Applied","Source","Status","Salary","Job URL","Contact","Contact Email","Notes","Tags"];
+            let rows = apps.map(function (app) {
+                return [
+                    app.id, app.company, app.role, app.location,
+                    app.dateApplied, app.source, app.status, app.salary || "",
+                    app.jobUrl || "", app.contact || "", app.contactEmail || "",
+                    (app.notes || "").replace(/\n/g, " "),
+                    (app.tags || []).join("; ")
+                ].map(function (val) { return '"' + String(val).replace(/"/g, '""') + '"'; }).join(",");
+            });
+            let csv = [headers.join(",")].concat(rows).join("\n");
+            let blob = new Blob([csv], { type: "text/csv" });
+            let url = URL.createObjectURL(blob);
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = "pursuit_applications.csv";
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast("Export downloaded: pursuit_applications.csv");
+        } catch (err) {
+            console.error("Export failed:", err);
+            showToast(err.message || "Couldn't reach the server. Please try again.", "error");
+        } finally {
+            setButtonLoading(exportDataBtn, false);
+        }
     });
 }
 

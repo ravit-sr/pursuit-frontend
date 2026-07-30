@@ -2,8 +2,12 @@ async function loadApplications() {
     let res = await fetch(API_BASE + "/applications", {
         credentials: "include"
     });
+    if (!res.ok) {
+        let err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || "Failed to load applications.");
+    }
     let data = await res.json();
-    return data;
+    return Array.isArray(data) ? data : [];
 }
 
 function getCompanyColor(company) {

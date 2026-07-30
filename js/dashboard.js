@@ -49,7 +49,13 @@ let applications;
 
 async function loadDashboardData() {
     if(isLoggedIn()) {
-        applications = await loadApplications();
+        try {
+            applications = await loadApplications();
+        } catch (err) {
+            console.error("Failed to load applications:", err);
+            applications = [];
+            showToast("Couldn't load your dashboard data. Please refresh.", "error");
+        }
     }else {
         applications = [];
     }

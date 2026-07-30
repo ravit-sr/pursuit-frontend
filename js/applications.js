@@ -229,7 +229,13 @@ document.querySelector("#searchInput").addEventListener("input", function (e) {
 
 (async function () {
     if(isLoggedIn()) {
-        applications = await loadApplications();
+        try {
+            applications = await loadApplications();
+        } catch (err) {
+            console.error("Failed to load applications:", err);
+            applications = [];
+            showToast("Couldn't load your applications. Please refresh.", "error");
+        }
     }else {
         applications = [];
     }

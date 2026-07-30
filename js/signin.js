@@ -80,6 +80,12 @@ document.querySelector("#signupForm").addEventListener("submit", async function(
     let email = document.querySelector("#su_email").value;
     let password = document.querySelector("#su_password").value;
     let submitBtn = e.target.querySelector('button[type="submit"]');
+
+    if (!document.querySelector("#su_terms").checked) {
+        showToast("Please agree to the Terms of Service and Privacy Policy to continue.", "error");
+        return;
+    }
+
     setButtonLoading(submitBtn, true);
 
     try {
@@ -238,8 +244,6 @@ document.querySelector("#su_password").addEventListener("input", function(e) {
 });
 
 (function handleGithubRedirect() {
-    // GitHub sign-in redirects back here with the user's info in the hash;
-    // the session cookie itself is already set httpOnly by the backend redirect.
     if (!window.location.hash.includes("id=")) return;
 
     let params = new URLSearchParams(window.location.hash.substring(1));

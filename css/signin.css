@@ -537,6 +537,38 @@
     transition: color 0.3s;
 }
 
+.terms-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.terms-check input[type="checkbox"] {
+    margin-top: 3px;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    accent-color: var(--primary, #4F46E5);
+    cursor: pointer;
+}
+
+.terms-check label {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.terms-check label a {
+    color: var(--primary, #4F46E5);
+    text-decoration: none;
+}
+
+.terms-check label a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 680px) {
     .auth-body {
         padding: 20px 12px;
@@ -643,7 +675,6 @@
         font-size: 13px;
     }
 
-    /* only show the switch relevant to the panel currently visible */
     .overlay-right {
         display: flex;
     }

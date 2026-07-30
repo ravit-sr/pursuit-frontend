@@ -1,11 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=dashboard.html" />
-  <title>Pursuit — Job Tracker</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pursuit — Track Every Job Application in One Place</title>
+<meta name="description" content="Pursuit is a job application tracker that helps you organize applications, monitor your progress, and get AI-powered resume feedback — all in one dashboard." />
+<style>
+  :root {
+    --bg-primary: #0f1117;
+    --bg-card: #1c2235;
+    --accent: #4f8ef7;
+    --accent-hover: #3a7af5;
+    --text-primary: #e8eaf0;
+    --text-secondary: #8b92a8;
+    --border: #1e2540;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #4f8ef7, #22d3ee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #0f1117;
+  }
+  .nav-actions a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.95rem;
+  }
+  .nav-actions .btn-primary {
+    background: var(--accent);
+    padding: 9px 18px;
+    border-radius: 8px;
+    color: #fff;
+  }
+  .nav-actions .btn-primary:hover { background: var(--accent-hover); }
+
+  .hero {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 96px 24px 64px;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto 32px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 13px 26px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--accent); }
+
+  .features {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+  }
+  .feature-card .icon {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  .feature-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .feature-card p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  footer a {
+    color: var(--text-secondary);
+    margin-left: 16px;
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--text-primary); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.9rem; }
+    nav { padding: 16px 20px; }
+  }
+</style>
 </head>
 <body>
-  <p>Redirecting to <a href="dashboard.html">Dashboard</a>...</p>
+
+  <nav>
+    <div class="brand">
+      <div class="brand-icon">P</div>
+      Pursuit
+    </div>
+    <div class="nav-actions">
+      <a href="signin.html">Sign In</a>
+      <a href="signin.html#signup" class="btn-primary">Get Started</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Track every job application in one place</h1>
+    <p>
+      Pursuit is a job application tracker built to help you stay organized
+      during your job search — log applications, monitor your progress
+      through every stage, and get AI-powered feedback on your resume,
+      all from a single dashboard.
+    </p>
+    <div class="hero-actions">
+      <a href="signin.html#signup" class="btn btn-primary">Create Free Account</a>
+      <a href="signin.html" class="btn btn-secondary">Sign In</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="icon">📋</div>
+      <h3>Application Tracking</h3>
+      <p>Log every job you apply to, track its status, and never lose sight of where you stand with each company.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📊</div>
+      <h3>Progress Analytics</h3>
+      <p>See your application funnel, response rates, and goal progress at a glance on your dashboard.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🤖</div>
+      <h3>AI Resume Coach</h3>
+      <p>Upload your resume and get AI-generated feedback and chat-based coaching to strengthen it for each role.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🔐</div>
+      <h3>Secure Sign-In</h3>
+      <p>Sign in with email, Google, or GitHub — your data is protected with encrypted authentication.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Pursuit</span>
+    <div>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
 </body>
 </html>

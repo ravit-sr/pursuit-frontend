@@ -221,12 +221,19 @@ async function renderResumeList() {
             btn.addEventListener("click", async function () {
                 if (!requireLogin()) return;
                 setButtonLoading(btn, true);
-                await fetch(API_BASE + "/resumes/" + btn.dataset.id + "/activate", {
-                    method: "PUT",
-                    credentials: "include"
-                });
-                await renderResumeList();
-                showResumeToast("Resume set as active.");
+                try {
+                    let res = await fetch(API_BASE + "/resumes/" + btn.dataset.id + "/activate", {
+                        method: "PUT",
+                        credentials: "include"
+                    });
+                    if (!res.ok) { showResumeToast("Failed to set active."); return; }
+                    await renderResumeList();
+                    showResumeToast("Resume set as active.");
+                } catch (e) {
+                    showResumeToast("Network error.");
+                } finally {
+                    setButtonLoading(btn, false);
+                }
             });
         });
 
@@ -236,12 +243,19 @@ async function renderResumeList() {
                 let confirmed = await showConfirm("Delete this resume? This cannot be undone.");
                 if (!confirmed) return;
                 setButtonLoading(btn, true);
-                await fetch(API_BASE + "/resumes/" + btn.dataset.id, {
-                    method: "DELETE",
-                    credentials: "include"
-                });
-                await renderResumeList();
-                showResumeToast("Resume deleted.");
+                try {
+                    let res = await fetch(API_BASE + "/resumes/" + btn.dataset.id, {
+                        method: "DELETE",
+                        credentials: "include"
+                    });
+                    if (!res.ok) { showResumeToast("Failed to delete."); return; }
+                    await renderResumeList();
+                    showResumeToast("Resume deleted.");
+                } catch (e) {
+                    showResumeToast("Network error.");
+                } finally {
+                    setButtonLoading(btn, false);
+                }
             });
         });
     }

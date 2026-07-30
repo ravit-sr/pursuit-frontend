@@ -7,7 +7,6 @@ function requireLogin() {
 }
 
 async function loadResumes() {
-    if (!isLoggedIn()) return [];
     let res = await fetch(API_BASE + "/resumes", {
         credentials: "include"
     });
@@ -309,7 +308,7 @@ if (resumeDropEl && resumeFileEl) {
     });
 }
 
-let reanalyzeBtn = document.querySelector(".score-card .btn-secondary");
+let reanalyzeBtn = document.querySelector("#reanalyzeBtn");
 if (reanalyzeBtn) {
     reanalyzeBtn.addEventListener("click", async function () {
         if (!requireLogin()) return;
@@ -351,7 +350,7 @@ if (reanalyzeBtn) {
     });
 }
 
-let newBtn = document.querySelector(".card-header .btn-secondary");
+let newBtn = document.querySelector("#newResumeBtn");
 if (newBtn) {
     newBtn.addEventListener("click", function () {
         resumeFileEl && resumeFileEl.click();

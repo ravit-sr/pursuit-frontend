@@ -209,9 +209,32 @@ async function loadPreview() {
         let contentType = res.headers.get("content-type") || "";
 
         if (contentType.includes("application/pdf")) {
-            let blob = await res.blob();
-            let url = URL.createObjectURL(blob);
-            previewPane.innerHTML = `<iframe class="resume-frame" src="${url}"></iframe>`;
+            const blob = await res.blob();
+            const pdfData = await blob.arrayBuffer();
+
+            previewPane.innerHTML = `
+                <canvas id="pdfCanvas"></canvas>
+            `;
+
+            const pdf = await pdfjsLib.getDocument({
+                data: pdfData
+            }).promise;
+
+            const page = await pdf.getPage(1);
+
+            const scale = 1.5;
+            const viewport = page.getViewport({ scale });
+
+            const canvas = document.getElementById("pdfCanvas");
+            const context = canvas.getContext("2d");
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({
+                canvasContext: context,
+                viewport: viewport
+            }).promise;
         } else {
             let data = await res.json();
             if (!res.ok) {
@@ -229,11 +252,6 @@ async function loadPreview() {
 }
 
 async function initCoach() {
-    if (!requireLogin()) {
-        hidePageSkeleton();
-        return;
-    }
-
     let resumes = await loadResumesList();
     let active = resumes.find(function (r) { return r.active; });
 

@@ -38,20 +38,10 @@ window.addEventListener("load", function () {
         client_id: GOOGLE_CLIENT_ID,
         callback: handleGoogleCredentialResponse
     });
-
-    // Google's button is a fixed-pixel iframe that won't shrink to fit its
-    // container, so measure the container first and cap the width to it
-    // (Google's widget supports 40-400px) instead of a hardcoded value that
-    // overflows the card on narrow/mobile screens.
     function gsiWidth(el) {
         let available = Math.floor(el.getBoundingClientRect().width) || 240;
         return Math.max(100, Math.min(400, available));
     }
-
-    // Defer to the next animation frame so the flex/column layout has
-    // finished sizing the container before we measure its width — measuring
-    // synchronously on "load" can catch the container mid-layout and render
-    // Google's button too small / misaligned.
     requestAnimationFrame(function () {
         let signinDiv = document.getElementById("g_id_signin");
         if (signinDiv) {
@@ -250,8 +240,6 @@ document.querySelector("#su_password").addEventListener("input", function(e) {
 });
 
 (function handleGithubRedirect() {
-    // GitHub sign-in redirects back here with the user's info in the hash;
-    // the session cookie itself is already set httpOnly by the backend redirect.
     if (!window.location.hash.includes("id=")) return;
 
     let params = new URLSearchParams(window.location.hash.substring(1));
